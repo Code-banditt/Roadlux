@@ -1,0 +1,106 @@
+"use client";
+import { useSession } from "next-auth/react";
+import React, { useEffect, useState } from "react";
+import { Alert, Error } from "../hooks/Toast";
+import { supabase } from "../lib/spabase";
+
+export default function EditProfileModal() {
+  const { data: session } = useSession(); // Assuming you have a session object from your auth provider
+  const [about, setAbout] = useState(""); // State for the about field
+
+  const UpdateProfile = async () => {
+    if (!session) return null; // Ensure session is available
+
+    const { data, error } = await supabase
+      .from("CustomerInformation")
+      .update({ about })
+      .eq("email", session.user.email);
+    Alert("Profile updated successfully!");
+    if (error) {
+      Error("Error updating profile:", error.message);
+    } else {
+      Alert("Profile updated successfully:", data);
+    }
+    // Optionally, you can close the modal here or show a success message
+  };
+
+  return (
+    <form onSubmit={UpdateProfile}>
+      {/* Modal Trigger */}
+      <label htmlFor="edit-profile-modal" className="btn btn-primary">
+        Edit Profile
+      </label>
+
+      {/* Modal */}
+      <input type="checkbox" id="edit-profile-modal" className="modal-toggle" />
+      <div className="modal">
+        <div className="modal-box w-full max-w-lg bg-white text-gray-800 shadow-xl rounded-2xl">
+          {/* Modal Header */}
+          <h3 className="font-bold text-2xl mb-6 text-center">Edit Profile</h3>
+
+          {/* Profile Picture Preview */}
+          <div className="flex justify-center mb-6">
+            <div className="avatar">
+              <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                <img
+                  src="https://via.placeholder.com/150"
+                  alt="Profile Preview"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Form Fields */}
+          <div className="space-y-4">
+            {/* Profile Picture Upload */}
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text font-medium">Profile Picture</span>
+              </label>
+              <input
+                type="file"
+                className="file-input file-input-bordered w-full"
+              />
+            </div>
+
+            {/* Location */}
+            <div className="form-control ">
+              <label className="label ">
+                <span className="label-text font-medium">Location</span>
+              </label>
+              <input
+                type="text"
+                placeholder="Your city, country"
+                className="input input-bordered w-full  bg-secondary"
+              />
+            </div>
+
+            {/* Bio */}
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text font-medium">Bio</span>
+              </label>
+              <textarea
+                required
+                value={about}
+                onChange={(e) => setAbout(e.target.value)}
+                className="textarea textarea-bordered w-full bg-secondary"
+                placeholder="Tell us about yourself"
+              ></textarea>
+            </div>
+          </div>
+
+          {/* Modal Actions */}
+          <div className="modal-action">
+            <label htmlFor="edit-profile-modal" className="btn btn-ghost">
+              Cancel
+            </label>
+            <button type="submit" className="btn btn-primary">
+              Save Changes
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  );
+}

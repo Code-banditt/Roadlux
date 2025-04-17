@@ -44,7 +44,7 @@ export default function OrderTracker({ booking }) {
       timers.forEach(clearTimeout);
       clearInterval(interval);
     };
-  }, [booking, trigger]); // ✅ Add trigger dependency
+  }, [booking, trigger, steps.length]); // ✅ Add trigger dependency
 
   const handleBooking = () => {
     if (!booking) return;

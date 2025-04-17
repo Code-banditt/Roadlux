@@ -7,7 +7,7 @@ export default function RoadluxFooter() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           <div className="md:col-span-2">
             <span className="text-2xl font-bold mb-4">
-              <h1>Let's drive with Roadlux today!</h1>
+              <h1>Let us drive with Roadlux today!</h1>
             </span>
             <p className="text-gray-600 mb-6 text-base md:text-lg">
               Get the app to explore this world of your own story and start on

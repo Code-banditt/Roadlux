@@ -122,7 +122,7 @@ export function VehicleProvider({ children }) {
         console.log("Vehicle not found in:", vehicles);
       }
     }
-  }, [vehicleID, vehicles]); // Runs when vehicleID or vehicles updates
+  }, [vehicleID, vehicles, selectedVehicle]); // Runs when vehicleID or vehicles updates
 
   const handleVehicleClick = (vehicle) => {
     setSelectedVehicle(vehicle); // Set vehicle for popup
@@ -147,46 +147,34 @@ export function VehicleProvider({ children }) {
     Alert(`Thanks for the feedback`);
   };
 
-  ///////////////////////////////
-  //////////////////////////////
-  ///////////////////////open modal
-  const [opencheckout, setcheckout] = useState(false);
-
-  const handleCheckout = () => {
-    setcheckout(true);
-    console.log("Checkout button clicked");
-  };
-
   ///////////////////////////////////
   //////////////////////////////////
   /////////////////////////////////
   //RETURN
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <vehicleContext.Provider
-        value={{
-          vehicles,
-          setVehicles,
-          page,
-          totalCount,
-          handleBrandClick,
-          handleMakeClick,
-          clearFilter,
-          onNext,
-          onPrevious,
-          hasNextPage,
-          hasPreviousPage,
-          handleVehicleClick,
-          closePopup,
-          selectedVehicle,
-          handleRated,
-          setisLoading,
-          isloading,
-        }}
-      >
-        {children}
-      </vehicleContext.Provider>
-    </Suspense>
+    <vehicleContext.Provider
+      value={{
+        vehicles,
+        setVehicles,
+        page,
+        totalCount,
+        handleBrandClick,
+        handleMakeClick,
+        clearFilter,
+        onNext,
+        onPrevious,
+        hasNextPage,
+        hasPreviousPage,
+        handleVehicleClick,
+        closePopup,
+        selectedVehicle,
+        handleRated,
+        setisLoading,
+        isloading,
+      }}
+    >
+      {children}
+    </vehicleContext.Provider>
   );
 }
 

@@ -30,7 +30,8 @@ export default function SecondAccord({ vehicle }) {
           How do I update my profile information?
         </div>
         <div className="collapse-content text-sm sm:text-base md:text-lg">
-          Go to "My Account" settings and select "Edit Profile" to make changes.
+          Go to &quot;My Account&quot; settings and select &quot;Edit
+          Profile&quot; to make changes.
         </div>
       </div>
     </div>

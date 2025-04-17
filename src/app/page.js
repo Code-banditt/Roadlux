@@ -11,6 +11,7 @@ import { motion } from "framer-motion";
 import { useStickyNav } from "./hooks/scrollReveal";
 import Newsbar from "./_components/newsBar";
 import RoadLuxFooter from "./_components/footer";
+import { Suspense } from "react";
 
 import Sponsors from "./_components/sponsors";
 import SideBarIcon from "./_components/sideBarIcon";
@@ -84,7 +85,9 @@ export default function Page() {
 
             {/* Car Tags */}
             <div className="duration-500 ease-in-out animate-pulse">
-              <Cartages />
+              <Suspense fallback={<div>Loading store...</div>}>
+                <Cartages />
+              </Suspense>
             </div>
           </div>
         </RevealOnScroll>
@@ -169,7 +172,7 @@ hover:scale-105"
             </span>
 
             <span className="w-full">
-              <h1>Tesla's will be available from March 14th &mdash;</h1>
+              <h1>Tesla&apos;s will be available from March 14th &mdash;</h1>
             </span>
 
             <span className="w-full">

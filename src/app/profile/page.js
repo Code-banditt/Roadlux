@@ -1,13 +1,14 @@
 "use client";
 import { useSession } from "next-auth/react";
 import { useEffect } from "react";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import EditProfileModal from "../_components/EditModal";
 import { supabase } from "../lib/spabase";
 import { Alert, Error } from "../hooks/Toast";
 import { fetchCustomer } from "../lib/library";
 import Brand from "../_components/brand";
+import Image from "next/image";
 
 export default function ProfilePage() {
   const router = useRouter();
@@ -62,26 +63,30 @@ export default function ProfilePage() {
     };
 
     insertSession();
-  }, [session]);
+  }, [session, status]);
 
-  const ProfileInfo = async () => {
-    if (!session) return;
+  const Page = () => {
+    const session = useSession(); // assuming this exists
+    const [profile, setProfile] = useState(null);
 
-    try {
-      const data = await fetchCustomer(session.user.email);
-      setProfile(data);
-      Alert("Profile fetched successfully");
-    } catch (error) {
-      Error("Error fetching profile:", error.message);
-    }
+    const ProfileInfo = useCallback(async () => {
+      if (!session) return;
+
+      try {
+        const data = await fetchCustomer(session.user.email);
+        setProfile(data);
+        Alert("Profile fetched successfully");
+      } catch (error) {
+        Error("Error fetching profile:", error.message);
+      }
+    }, [session]); // memoized based on session
+
+    useEffect(() => {
+      if (session) {
+        ProfileInfo();
+      }
+    }, [session, ProfileInfo]); // ✅ this is now okay
   };
-
-  useEffect(() => {
-    if (session) {
-      ProfileInfo();
-    }
-  }, [session]);
-
   return (
     <div>
       <div className="navbar bg-base-100 shadow-lg sticky top-0 z-50">
@@ -91,10 +96,12 @@ export default function ProfilePage() {
       <div className="min-h-screen bg-base-200 flex items-center justify-center p-8">
         <div className="card w-full max-w-md shadow-2xl bg-base-100">
           <figure className="px-10 pt-10">
-            <img
-              src="https://i.pravatar.cc/300"
-              alt="Profile"
-              className="rounded-full w-32 h-32 object-cover"
+            <Image
+              src={session?.user?.image}
+              alt="profile"
+              width={200}
+              height={200}
+              className="rounded-xl"
             />
           </figure>
 

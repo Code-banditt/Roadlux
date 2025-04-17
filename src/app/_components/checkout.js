@@ -1,7 +1,4 @@
 "use client";
-import Image from "next/image";
-import { useVehicleContext } from "../_context/vehicleContex";
-import { useEffect } from "react";
 
 export default function Checkout() {
   return (

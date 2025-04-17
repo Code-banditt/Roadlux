@@ -79,13 +79,13 @@ export default function AboutUs() {
               </p>
               <p className="text-xs sm:text-sm text-gradient-to-br from-black to-transparent clip-triangle">
                 &mdash; As we embarked on this journey, we knew that merely
-                offering vehicles wasn't enough. We wanted to create a unique
-                experience for our customers, one that would make every journey
-                memorable. Our dedication to excellence led us to carefully
-                select and maintain a diverse fleet of 50+ vehicles, ensuring
-                that we could cater to the varying needs of our clients. From
-                sleek sedans for business travelers to spacious SUVs for family
-                vacations, we had it all.
+                offering vehicles wasn&apotas;t enough. We wanted to create a
+                unique experience for our customers, one that would make every
+                journey memorable. Our dedication to excellence led us to
+                carefully select and maintain a diverse fleet of 50+ vehicles,
+                ensuring that we could cater to the varying needs of our
+                clients. From sleek sedans for business travelers to spacious
+                SUVs for family vacations, we had it all.
               </p>
             </div>
           </div>

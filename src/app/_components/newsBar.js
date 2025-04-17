@@ -34,14 +34,15 @@ export default function Newsbar() {
           </span>
           <span className="w-full p-3 flex flex-col gap-2">
             <h1 className="font-bold text-4xl sm:text-6xl md:text-8xl opacity-55 font-mono">
-              "
+              &quot;
             </h1>
             <p className="text-sm sm:text-base">
-              "I've been using this service for a few months now, and I honestly
-              couldn't be happier. The entire process was smooth from start to
-              finish, and the support team was always quick to respond whenever
-              I had questions. It's rare to find a company that truly values its
-              customers the way this one does. Highly recommended!"
+              I&apos;ve been using this service for a few months now, and I
+              honestly couldn&apos;t be happier. The entire process was smooth
+              from start to finish, and the support team was always quick to
+              respond whenever I had questions. It&apos;s rare to find a company
+              that truly values its customers the way this one does. Highly
+              recommended!
             </p>
             <p className="text-lg sm:text-xl font-bold">Tolu markuo &mdash;</p>
             <span className="text-xs sm:text-sm text-orange-600 flex items-center justify-between">
@@ -66,11 +67,11 @@ export default function Newsbar() {
           </span>
           <span className="w-full p-3 flex flex-col gap-2">
             <h1 className="font-bold text-4xl sm:text-6xl md:text-8xl opacity-55 font-mono">
-              "
+              &quot;
             </h1>
             <p className="text-sm sm:text-base">
-              "We explored the best of cars, toyota, bmw, bentley all without
-              the usual renting stress, truly a trip of a lifetime!"
+              We explored the best of cars, toyota, bmw, bentley all without the
+              usual renting stress, truly a trip of a lifetime!
             </p>
             <p className="text-lg sm:text-xl font-bold">
               Ebrima colley &mdash;
@@ -97,11 +98,11 @@ export default function Newsbar() {
           </span>
           <div className="w-full p-3 flex flex-col gap-2">
             <h1 className="font-bold text-4xl sm:text-6xl md:text-8xl opacity-55 font-mono">
-              "
+              &quot;
             </h1>
             <p className="text-sm sm:text-base">
-              "We explored the best of cars, toyota, bmw, bentley all without
-              the usual renting stress, truly a trip of a lifetime!"
+              We explored the best of cars, toyota, bmw, bentley all without the
+              usual renting stress, truly a trip of a lifetime!
             </p>
             <p className="text-lg sm:text-xl font-bold">Nancy Ekoku &mdash;</p>
             <span className="text-xs sm:text-sm text-orange-600 flex items-center justify-between">

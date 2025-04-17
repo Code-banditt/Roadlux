@@ -1,6 +1,7 @@
 "use client";
 
 import { useSession } from "next-auth/react";
+import Image from "next/image";
 
 export default function Platelets() {
   const { data: session } = useSession();
@@ -67,7 +68,13 @@ export default function Platelets() {
         <div className="stat-figure text-secondary">
           <div className="avatar online">
             <div className="w-16 rounded-full">
-              <img src={session?.user?.image || "img"} alt="user-avatar" />
+              <Image
+                width={100}
+                height={100}
+                className="rounded-full"
+                src={session?.user?.image || "img"}
+                alt="user-avatar"
+              />
             </div>
           </div>
         </div>

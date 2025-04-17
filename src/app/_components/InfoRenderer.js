@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useEffect } from "react";
 import InfoForm from "./InfoForm";
-import Platelets from "./Platelets";
+import { Suspense } from "react";
 import { FaArrowLeft, FaHeart } from "react-icons/fa";
 import Rating from "./starRater";
 import Fav from "./favourite";
@@ -73,7 +73,9 @@ export default function InfoRenderer({ vehicle, onClose }) {
               </p>
             </div>
             <div className="mx-6 lg:w-1/6">
-              <Rating />
+              <Suspense fallback={<div>Loading...</div>}>
+                <Rating />
+              </Suspense>
             </div>
             <div className="m-auto p-6 text-center sm:text-left">
               <h2 className="text-2xl font-semibold font-inter">
@@ -119,7 +121,10 @@ export default function InfoRenderer({ vehicle, onClose }) {
 
         {/* Calendar and Form Div */}
         <div className="flex justify-center items-center mt-10">
-          <InfoForm vehicle={vehicle} />
+          <Suspense fallback={<div>Loading...</div>}>
+            {" "}
+            <InfoForm vehicle={vehicle} />{" "}
+          </Suspense>
         </div>
       </div>
     </div>

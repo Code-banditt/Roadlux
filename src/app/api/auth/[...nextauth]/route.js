@@ -1,5 +1,5 @@
-import NextAuth from "next-auth";
-import GoogleProvider from "next-auth/providers/google";
+const NextAuth = require("next-auth").default;
+const GoogleProvider = require("next-auth/providers/google").default;
 
 export const authOptions = {
   providers: [

@@ -1,5 +1,7 @@
+"use client";
+
 import Image from "next/image";
-import image1 from "/public/imgs/bentbet.png";
+
 import Rating from "./starRater";
 
 export default function VehicleCard({ vehicle, onClick }) {

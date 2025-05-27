@@ -1,3 +1,5 @@
+"use client";
+
 import { Star } from "lucide-react";
 import { useState } from "react";
 import { useVehicleContext } from "../_context/vehicleContex";

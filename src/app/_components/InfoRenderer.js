@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useEffect } from "react";
 import InfoForm from "./InfoForm";
 import { Suspense } from "react";
-import { FaArrowLeft, FaHeart } from "react-icons/fa";
+import { FaArrowLeft } from "react-icons/fa";
 import Rating from "./starRater";
 import Fav from "./favourite";
 import { useReadMore } from "../hooks/readmore";

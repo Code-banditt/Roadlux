@@ -11,17 +11,22 @@ export default function EditProfileModal() {
   const UpdateProfile = async () => {
     if (!session) return null; // Ensure session is available
 
-    const { data, error } = await supabase
-      .from("CustomerInformation")
-      .update({ about })
-      .eq("email", session.user.email);
-    Alert("Profile updated successfully!");
-    if (error) {
-      Error("Error updating profile:", error.message);
-    } else {
-      Alert("Profile updated successfully:", data);
+    try {
+      const { data, error } = await supabase
+        .from("CustomerInformation")
+        .update({ about })
+        .eq("email", session.user.email);
+
+      if (error) {
+        throw new Error(error.message);
+      }
+
+      Alert("Profile updated successfully!");
+      console.log("Updated data:", data); // Optional: Log or use updated data
+    } catch (err) {
+      console.error("Error updating profile:", err.message);
+      Error("Error updating profile:", err.message);
     }
-    // Optionally, you can close the modal here or show a success message
   };
 
   return (

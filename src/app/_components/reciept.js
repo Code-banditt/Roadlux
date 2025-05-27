@@ -1,4 +1,9 @@
+"use client";
+
 export default function Reciept({ booking }) {
+  if (!booking) {
+    return <p>No booking data available</p>; // or return null or a spinner
+  }
   //date processing
   const rawDate = booking.rentalStart || booking.rentalEnd;
   if (!rawDate) return null; // Handle case where date is not available

@@ -1,5 +1,3 @@
-"use client";
-
 export default function Checkout() {
   return (
     <div className="absolute inset-0 z-50 bg-white/30 backdrop-blur-sm flex items-center justify-center ">

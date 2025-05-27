@@ -13,38 +13,43 @@ export default function MyDatePicker({
 }) {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-  // Store duration as a string
 
-  // Calculate duration whenever startDate or endDate changes
+  // Ensure that rentalStart and rentalEnd are always set correctly.
   useEffect(() => {
-    if (startDate && endDate) {
-      const differenceInTime = endDate.getTime() - startDate.getTime();
-      // Calculate the duration in whole days (rounded down)
-      const days = Math.max(
-        Math.floor(differenceInTime / (1000 * 3600 * 24)),
-        0
-      ); // Ensure non-negative, rounded down
-      setDuration(days > 0 ? `${days} day(s)` : ""); // Avoid negative values
-    }
-  }, [startDate, endDate, setDuration]);
-
-  useEffect(() => {
-    // Synchronize rentalStart state with startDate on mount (only if it's not already set)
     if (!rentalStart) {
       setRentalStart(startDate);
     }
-  }, [startDate, rentalStart, setRentalStart]);
+    if (!rentalEnd) {
+      setRentalEnd(endDate);
+    }
+  }, [
+    startDate,
+    endDate,
+    rentalStart,
+    rentalEnd,
+    setRentalStart,
+    setRentalEnd,
+  ]);
+
+  useEffect(() => {
+    if (startDate && endDate) {
+      const differenceInTime = endDate.getTime() - startDate.getTime();
+      const days = Math.max(
+        Math.floor(differenceInTime / (1000 * 3600 * 24)),
+        0
+      );
+      setDuration(days > 0 ? `${days} day(s)` : "");
+    }
+  }, [startDate, endDate, setDuration]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Validate duration before submitting
     if (!duration || duration === "") {
       alert("Please select a rental duration.");
       return;
     }
 
-    // Handle the actual form submission
     console.log("Form submitted");
   };
 
@@ -64,10 +69,10 @@ export default function MyDatePicker({
             onChange={(date) => {
               setStartDate(date);
               setRentalStart(date);
-            }} // Update state with the selected date
-            dateFormat="dd/MM/yyyy" // Optional: Specify the date format
-            isClearable // Optional: Adds a clear button
-            placeholderText="Select a date" // Optional: Placeholder text
+            }}
+            dateFormat="dd/MM/yyyy"
+            isClearable
+            placeholderText="Select a date"
             className="text-sm border rounded-lg h-9 p-2 bg-white"
           />
         </div>
@@ -83,10 +88,10 @@ export default function MyDatePicker({
             onChange={(date) => {
               setEndDate(date);
               setRentalEnd(date);
-            }} // Update state with the selected date
-            dateFormat="dd/MM/yyyy" // Optional: Specify the date format
-            isClearable // Optional: Adds a clear button
-            placeholderText="Select a date" // Optional: Placeholder text
+            }}
+            dateFormat="dd/MM/yyyy"
+            isClearable
+            placeholderText="Select a date"
             className="text-sm border rounded-lg h-9 p-2 bg-white"
           />
         </div>
@@ -97,7 +102,7 @@ export default function MyDatePicker({
           </label>
           <input
             required
-            value={duration}
+            value={duration || "Select duration"}
             disabled
             id="duration"
             className="text-sm border rounded-lg h-9 p-2"

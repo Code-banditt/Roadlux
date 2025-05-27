@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useVehicleContext, VehicleProvider } from "../_context/vehicleContex";
+import { useVehicleContext } from "../_context/vehicleContex";
 
 export default function Cartages() {
   const { handleBrandClick, handleMakeClick } = useVehicleContext();

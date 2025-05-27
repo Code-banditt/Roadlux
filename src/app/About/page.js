@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import image1 from "/public/imgs/naturalteam.png";
 import image2 from "/public/imgs/carteam2.jpg";

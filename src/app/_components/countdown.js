@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -37,6 +39,10 @@ export default function Countdown({ booking }) {
 
     return () => clearInterval(interval);
   }, [booking.rentalStart, booking.rentalEnd]);
+
+  if (!booking) {
+    return <p>No booking data available</p>; // or return null or a spinner
+  }
 
   const renderTimeUnit = (value, label) => (
     <div className="text-center">

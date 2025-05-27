@@ -4,11 +4,7 @@ import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useEffect, useState } from "react";
 
-export default function RevealOnScroll({
-  children,
-  direction = "left",
-  className = "contents",
-}) {
+export default function RevealOnScroll({ children, direction = "left" }) {
   const controls = useAnimation();
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
@@ -52,7 +48,7 @@ export const useStickyNav = () => {
 
   useEffect(() => {
     setSticky(!inView);
-  }, [inView]);
+  }, [inView, isSticky]);
 
   return { ref, isSticky };
 };

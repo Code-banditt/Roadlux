@@ -1,8 +1,7 @@
-import { motion } from "framer-motion";
 import Image from "next/image";
 import image1 from "/public/imgs/image0_0.jpg";
 import Link from "next/link";
-console.log("motion:", motion);
+
 export default function Brand() {
   return (
     <div>

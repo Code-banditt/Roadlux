@@ -1,3 +1,4 @@
+"use cleint";
 import { useState } from "react";
 
 export function useReadMore(limit = 100) {

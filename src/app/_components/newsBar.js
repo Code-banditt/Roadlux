@@ -5,7 +5,6 @@ import Image from "next/image";
 import image1 from "/public/imgs/testi2.jpg";
 import image2 from "/public/imgs/testi3.jpg";
 import image3 from "/public/imgs/testi.jpg";
-import { useState, useEffect } from "react";
 
 export default function Newsbar() {
   return (

@@ -1,7 +1,7 @@
 "use client";
 import { useSession } from "next-auth/react";
 import React, { useEffect, useState } from "react";
-import { Alert, Error, showError } from "../hooks/Toast";
+import { Alert, showError } from "../hooks/Toast";
 import { supabase } from "../lib/spabase";
 
 export default function EditProfileModal() {

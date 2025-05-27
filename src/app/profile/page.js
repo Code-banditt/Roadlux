@@ -37,7 +37,7 @@ export default function ProfilePage() {
 
         if (fetchError && fetchError.code !== "PGRST116") {
           // Handle error if it's not a "no data" error
-          Error("Fetch error:", fetchError);
+          showError("Fetch error:", fetchError);
           return;
         }
 

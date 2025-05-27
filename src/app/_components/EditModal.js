@@ -1,7 +1,7 @@
 "use client";
 import { useSession } from "next-auth/react";
 import React, { useEffect, useState } from "react";
-import { Alert, Error } from "../hooks/Toast";
+import { Alert, Error, showError } from "../hooks/Toast";
 import { supabase } from "../lib/spabase";
 
 export default function EditProfileModal() {
@@ -18,14 +18,14 @@ export default function EditProfileModal() {
         .eq("email", session.user.email);
 
       if (error) {
-        throw new Error(error.message);
+        throw new showError(error.message);
       }
 
       Alert("Profile updated successfully!");
       console.log("Updated data:", data); // Optional: Log or use updated data
     } catch (err) {
       console.error("Error updating profile:", err.message);
-      Error("Error updating profile:", err.message);
+      showError("Error updating profile:", err.message);
     }
   };
 

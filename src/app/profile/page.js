@@ -5,7 +5,7 @@ import { useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import EditProfileModal from "../_components/EditModal";
 import { supabase } from "../lib/spabase";
-import { Alert, Error } from "../hooks/Toast";
+import { Alert, showError } from "../hooks/Toast";
 import { fetchCustomer } from "../lib/library";
 import Brand from "../_components/brand";
 import Image from "next/image";
@@ -50,7 +50,7 @@ export default function ProfilePage() {
             });
 
           if (insertError) {
-            Error("Insert error:", insertError);
+            showError("Insert error:", insertError);
           } else {
             Alert("Session inserted successfully!");
           }
@@ -58,7 +58,7 @@ export default function ProfilePage() {
           Alert("Session already exists, skipping insert.");
         }
       } catch (err) {
-        Error("Unexpected error:", err);
+        showError("Unexpected error:", err);
       }
     };
 
@@ -77,7 +77,7 @@ export default function ProfilePage() {
         setProfile(data);
         Alert("Profile fetched successfully");
       } catch (error) {
-        Error("Error fetching profile:", error.message);
+        showError("Error fetching profile:", error.message);
       }
     }, [session]); // memoized based on session
 

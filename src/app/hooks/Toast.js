@@ -13,7 +13,7 @@ export default function AuthSessionToast() {
       toast.success(`login successful 🎉`),
         {
           style: {
-            fontsize: "14px",
+            fontSize: "14px",
           },
         };
       hasShownToast.current = true;
@@ -27,6 +27,6 @@ export function Alert(message) {
   toast.success(message);
 }
 
-export function Error(message) {
+export function showError(message) {
   toast.error(message);
 }

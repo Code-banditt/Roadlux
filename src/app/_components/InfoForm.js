@@ -2,14 +2,14 @@
 
 import MyDatePicker from "./Calender";
 import { useSession } from "next-auth/react";
-import { Alert, Error } from "../hooks/Toast";
+import { Alert, showError } from "../hooks/Toast";
 import { bookVehicles, getExchangeRate, getUserCurrency } from "../lib/library";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useVehicleContext } from "../_context/vehicleContex";
 import formatCurrency from "../lib/helper";
 
-export default function InfoForm({ vehicle }) {
+export default function InfoForm({ vehicle, onClose }) {
   const { data: session } = useSession();
   const router = useRouter();
   const random = Math.floor(1000 + Math.random() * 9000);
@@ -66,11 +66,11 @@ export default function InfoForm({ vehicle }) {
       const booking = await bookVehicles(bookingData);
       if (booking) {
         Alert("Booking successful!");
-        closePopup();
+        onClose();
         router.push("/redirect");
       }
     } catch (err) {
-      Error("Booking failed. Please try again.");
+      showError("Booking failed. Please try again.");
       console.error("Booking error:", err?.message || err);
     }
   };

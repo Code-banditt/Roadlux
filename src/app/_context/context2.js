@@ -1,7 +1,7 @@
 "use client";
 import { createContext, useContext, useState } from "react";
 import { AddFavourites, FindBooking } from "../lib/library";
-import { Alert, Error } from "../hooks/Toast";
+import { Alert, showError } from "../hooks/Toast";
 import { useSession } from "next-auth/react";
 
 // Create the context
@@ -33,7 +33,7 @@ export function BookProvider({ children }) {
       Alert("Added to wishlist");
     } catch (err) {
       console.error("Failed to add favorite:", err); // ✅ Full error log
-      Error("Failed to add to wishlist");
+      showError("Failed to add to wishlist");
     }
   };
 

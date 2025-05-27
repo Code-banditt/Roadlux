@@ -123,7 +123,7 @@ export default function InfoRenderer({ vehicle, onClose }) {
         <div className="flex justify-center items-center mt-10">
           <Suspense fallback={<div>Loading...</div>}>
             {" "}
-            <InfoForm vehicle={vehicle} />{" "}
+            <InfoForm vehicle={vehicle} onClose={onClose} />{" "}
           </Suspense>
         </div>
       </div>
